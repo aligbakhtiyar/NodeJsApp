@@ -6,7 +6,14 @@ const app = express();
 const port = 3001;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://node-js-app-liard.vercel.app/"],
+    methods: ["POST", "GET", "DELETE"],
+    Credentials: true,
+  })
+);
+
 
 
 // mongoose.connect('mongodb+srv://codewithbakhtiyar:Ahmad@123@cluster0.jjnoit8.mongodb.net/')
