@@ -1,0 +1,4 @@
+PORT=3000
+MONGODB_URI=mongodb+srv://codewithbakhtiyar:<Ahmad123>@cluster0.finqq05.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0,
+
+export JWT_SECRET="c7ef8d2a7dc8d38422bd96e625435cb0adc8bc9d5a575ece6536e6eac35db835"
