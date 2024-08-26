@@ -4,6 +4,7 @@ const connectDB = require("./db/conn");
 const userRoutes = require("./routes/userRoutes ");
 const dataRouter = require("./routes/router");
 const onlineRoutes = require('./routes/courseRoutes')
+const blogRoutes = require('./routes/blogRoutes')
 
 const mongoose = require("mongoose");
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors());
 app.use("/api/data", dataRouter);
 app.use("/api", userRoutes);
 app.use('/api/course', onlineRoutes);
+app.use('/api/post', blogRoutes);
 //
 // connectDB()
 //   .then(() => {
