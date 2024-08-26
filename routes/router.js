@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Data = require('../model/Data'); 
+const Data = require('../model/Data')
 
 // Add data
 router.post('/', async (req, res) => {
