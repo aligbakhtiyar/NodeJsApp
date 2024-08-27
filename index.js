@@ -1,17 +1,22 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require('dotenv')
 const connectDB = require("./db/conn");
 const userRoutes = require("./routes/userRoutes ");
 const dataRouter = require("./routes/router");
 const onlineRoutes = require('./routes/courseRoutes')
 const blogRoutes = require('./routes/blogRoutes')
-
 const mongoose = require("mongoose");
-const app = express();
-const port = 3001;
+dotenv.config();
+//const port = 3001;
 
+
+
+const app = express();
 app.use(express.json());
 app.use(cors());
+
+const port = process.env.PORT ||3001
 
 // mongoose.connect('mongodb+srv://codewithbakhtiyar:Ahmad@123@cluster0.jjnoit8.mongodb.net/')
 // .then(() => console.log('Connected to MongoDB'))

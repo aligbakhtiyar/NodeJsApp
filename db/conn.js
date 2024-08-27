@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
+const dotenv = require('dotenv')
 
+
+dotenv.config();
 async function connectDB(dbName) {
   if (!dbName) {
     throw new Error("Database name is required");
   }
+  const mongodb_url = process.env.MongodbURL
+   
 
-  const uri = `mongodb+srv://codewithbakhtiyar:Ahmad123@cluster0.finqq05.mongodb.net/${dbName}?retryWrites=true&w=majority&appName=Cluster0`;
-
+  
   try {
-    const connection = await mongoose.createConnection(uri);
+    const connection = await mongoose.createConnection(mongodb_url);
     console.log(`Connected to ${dbName} database`);
     return connection;
   } catch (err) {
