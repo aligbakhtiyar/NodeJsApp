@@ -15,9 +15,6 @@ app.use(cors());
 
 const port = process.env.PORT ||3001
 
-// mongoose.connect('mongodb+srv://codewithbakhtiyar:Ahmad@123@cluster0.jjnoit8.mongodb.net/')
-// .then(() => console.log('Connected to MongoDB'))
-// .catch(err => console.error('Failed to connect to MongoDB:', err));
 
 // Include the router for API endpoints
 app.use("/api/data", dataRouter);
@@ -32,7 +29,7 @@ async function connectDatabases() {
     const webapiDB = await connectDB("WebAPI");
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
-     console.log(testDB, 'testDB') 
+     
     });
   } catch (err) {
     console.error("Error connecting to databases:", err);

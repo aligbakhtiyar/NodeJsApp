@@ -14,7 +14,7 @@ async function connectDB(dbName) {
   }
 
   const finalUrl = mongodb_url.replace('<dbName>', dbName);
-  console.log(finalUrl, 'finalUrl')
+ // console.log(finalUrl, 'finalUrl')
    
 
   
