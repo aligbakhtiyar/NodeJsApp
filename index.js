@@ -8,9 +8,6 @@ const onlineRoutes = require('./routes/courseRoutes')
 const blogRoutes = require('./routes/blogRoutes')
 const mongoose = require("mongoose");
 dotenv.config();
-//const port = 3001;
-
-
 
 const app = express();
 app.use(express.json());
@@ -27,42 +24,15 @@ app.use("/api/data", dataRouter);
 app.use("/api", userRoutes);
 app.use('/api/course', onlineRoutes);
 app.use('/api/post', blogRoutes);
-//
-// connectDB()
-//   .then(() => {
-//     app.listen(port, () => {
-//       console.log(`Server is running at ${port}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error("Error connecting to database:", err);
-//   });
 
-// connectDB("webapi")
-//   .then(() => {
-//     console.log("Database connection established");
-
-//     // Start the server
-//     app.listen(port, () => {
-//       console.log(`Server is running on port ${port}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error("Error connecting to database:", err);
-//   });
 
 async function connectDatabases() {
   try {
     const testDB = await connectDB("test");
     const webapiDB = await connectDB("WebAPI");
-
-    // You can now use these connections independently
-    // For example, creating models for each database:
-    // const UserModelTest = testDB.model("User", new mongoose.Schema({ name: String }));
-    // const UserModelWebapi = webapiDB.model("User", new mongoose.Schema({ name: String }));
-
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
+     console.log(testDB, 'testDB') 
     });
   } catch (err) {
     console.error("Error connecting to databases:", err);
