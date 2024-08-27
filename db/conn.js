@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const dotenv = require('dotenv')
-
-
 dotenv.config();
+
+
+
 async function connectDB(dbName) {
   if (!dbName) {
     throw new Error("Database name is required");
