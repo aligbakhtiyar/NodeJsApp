@@ -18,19 +18,18 @@ router.post('/blog', async (req, res) => {
 router.get('/blogs', async (req, res) => {
     try {
     const Post =await BlogPost('WebAPI')
-    const posts = await Post.findOne();
+    const posts = await Post.find();
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-
-
 // Get a single blog post by ID
 router.get('/blog/:id', async (req, res) => {
   try {
-    const post = await BlogPost.findOne({ id: req.params.id });
+    const Post =await BlogPost('WebAPI')
+    const post = await Post.findOne({ id: req.params.id });
     if (post) {
       res.status(200).json(post);
     } else {

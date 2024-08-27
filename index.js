@@ -6,6 +6,7 @@ const userRoutes = require("./routes/userRoutes ");
 const dataRouter = require("./routes/router");
 const onlineRoutes = require('./routes/courseRoutes')
 const blogRoutes = require('./routes/blogRoutes')
+const itemRoutes = require('./routes/itemRoutes')
 const mongoose = require("mongoose");
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/api/data", dataRouter);
 app.use("/api", userRoutes);
 app.use('/api/course', onlineRoutes);
 app.use('/api/post', blogRoutes);
+app.use('/api/recipe', itemRoutes);
 
 
 async function connectDatabases() {
