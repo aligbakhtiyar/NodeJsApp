@@ -23,7 +23,7 @@ app.use("/api/data", dataRouter);
 app.use("/api", userRoutes);
 app.use('/api/course', onlineRoutes);
 app.use('/api/post', blogRoutes);
-app.use('/api/item', itemRoutes);
+app.use('/api/items', itemRoutes);
    
 
 async function connectDatabases() {

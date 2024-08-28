@@ -85,7 +85,7 @@ const itemSchema = new mongoose.Schema({
 
 async function RecipeModel(dbName) {
     const connection = await require("../db/conn")(dbName);
-    return connection.model("Item", itemSchema);
+    return connection.model("Items", itemSchema);
   }
 // Creating the model
 // const Item = mongoose.model('Item', itemSchema);
