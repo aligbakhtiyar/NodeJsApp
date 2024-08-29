@@ -6,8 +6,8 @@ const router = express.Router()
 
 
 router.get("/", getallItems)
-router.get("/:id", singleItem)
-router.get("/", searchItem)
+router.get("/single/:id", singleItem)
+router.get("/search", searchItem)
 router.post("/", postItem)
 
 

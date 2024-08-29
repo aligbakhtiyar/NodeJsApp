@@ -9,7 +9,7 @@ const itemRoutes = require('./routes/itemRoutes')
 
 const mongoose = require("mongoose");
 const app = express();
-const port = 3001;
+const port = 5001;
 
 app.use(express.json());
 app.use(cors());
@@ -30,8 +30,6 @@ async function connectDatabases() {
   try {
     const testDB = await connectDB("test");
     const webapiDB = await connectDB("WebAPI");
-
-
 
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
