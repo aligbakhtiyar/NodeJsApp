@@ -15,9 +15,15 @@ const port = process.env.PORT || 5001;
 const jwtSecret = process.env.JWT_SECRET;
 console.log('JWT Secret:', jwtSecret);
 
+const corsOptions = {
+  origin: 'https://edublends-lms.vercel.app',  // Allow only this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+};
+
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 
