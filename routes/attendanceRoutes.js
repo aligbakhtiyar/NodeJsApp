@@ -1,19 +1,21 @@
 const express = require("express");
 const {
- // markTimeIn,
-  //markTimeOut,
   getAllAttendance,
-  //getAttendanceByUser,
-} = require("../controller/attendanceController");  
+  // markTimeIn,
+  // markTimeOut,
+  // getAttendanceByUser,
+} = require("../controller/attendanceController");
 
 const router = express.Router();
 
-// Time-in and Time-out routes
+// Routes for attendance management
+
+// Fetch all attendance data
+router.get("/all", getAllAttendance);
+
+// Future routes for attendance (commented for now)
 // router.post("/time-in", markTimeIn);
 // router.post("/time-out", markTimeOut);
-
-// Fetch attendance data
-router.get("/attendance", getAllAttendance);
 // router.get("/:userId", getAttendanceByUser);
 
 module.exports = router;
