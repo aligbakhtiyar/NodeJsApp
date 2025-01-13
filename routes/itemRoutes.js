@@ -1,14 +1,21 @@
-const express = require('express')
+const express = require("express");
+const {
+  getAllAttendance,
+  // markTimeIn,
+  // markTimeOut,
+  // getAttendanceByUser,
+} = require("../controller/attendanceController");
 
-const { getallItems, postItem, searchItem, singleItem } = require('../controller/itemController');
-const router = express.Router()
+const router = express.Router();
 
+// Routes for attendance management
 
+// Fetch all attendance data
+router.get("/", getAllAttendance);
 
-router.get("/", getallItems)
-router.get("/single/:id", singleItem)
-router.get("/search", searchItem)
-router.post("/", postItem)
-
+// Future routes for attendance (commented for now)
+// router.post("/time-in", markTimeIn);
+// router.post("/time-out", markTimeOut);
+// router.get("/:userId", getAttendanceByUser);
 
 module.exports = router;

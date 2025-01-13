@@ -25,7 +25,7 @@ app.use(express.json());
 app.use("/api/course", onlineRoutes);
 app.use("/api/post", blogRoutes);
 app.use("/api/items", itemRoutes);
-app.use("/api/attendance", attendanceRoutes);
+// app.use("/api/attendance", attendanceRoutes);
 app.use("/api/auth", authRoutes);
 // MongoDB connection
 async function main() {
