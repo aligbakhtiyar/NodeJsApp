@@ -33,8 +33,8 @@ app.use(cors(corsOptions));
 app.use("/api/course", onlineRoutes);
 app.use("/api/post", blogRoutes);
 app.use("/api/items", itemRoutes);
-app.use("/attendance", attendanceRoutes);
-app.use('/api/auth', authRoutes)
+app.use("/api/auth", attendanceRoutes);
+//app.use('/api/auth', authRoutes)
 
 // MongoDB connection
 async function main() {
