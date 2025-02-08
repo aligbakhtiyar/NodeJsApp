@@ -11,9 +11,9 @@ const {
 // Public routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
+router.get('/all',  getAllUsers); // New route for getting all users
 
 // Protected routes
 router.get('/profile', protect, getUserProfile);
-router.get('/all', protect, getAllUsers); // New route for getting all users
 
 module.exports = router;
