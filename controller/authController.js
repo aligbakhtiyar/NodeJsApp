@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); 
+const User = require('../models/User');
 
 // Register a new user
 const registerUser = async (req, res) => {
@@ -23,17 +23,24 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
+    // Generate token
+    const token = generateToken(user._id);
+
+    // Update user with the generated token
+    user.token = token;
+    await user.save();
+
+    // Send response
     res.status(201).json({
       id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      token: user.token,
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 // Login a user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -76,6 +83,21 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+// Get all users (protected route)
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({}, { password: 0 }); // Exclude passwords from the response
+
+    if (!users || users.length === 0) {
+      return res.status(404).json({ message: 'No users found' });
+    }
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 // Helper function to generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -87,4 +109,5 @@ module.exports = {
   registerUser,
   loginUser,
   getUserProfile,
+  getAllUsers, // Export the new function
 };
