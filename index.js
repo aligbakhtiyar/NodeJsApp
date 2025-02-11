@@ -32,7 +32,7 @@ async function main() {
 main().catch((err) => console.log(err));
 
 // Start the server
-``
+
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
