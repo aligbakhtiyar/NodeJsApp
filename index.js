@@ -23,6 +23,7 @@ app.use(express.json());
 //app.use("/api/items", itemRoutes);
 // app.use("/api/attendance", attendanceRoutes);
 app.use("/api/auth", authRoutes);
+
 // MongoDB connection
 async function main() {
   await mongoose.connect(process.env.MONGO_URI); // Use MONGO_URI from .env
