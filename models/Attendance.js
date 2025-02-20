@@ -1,24 +1,30 @@
 const mongoose = require("mongoose");
 
-const attendanceSchema = new mongoose.Schema({
-  userId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: "User", 
-    required: true 
+const attendanceSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true, // Store the username
+    },
+    date: {
+      type: String,
+      required: true, // Storing date in 'YYYY-MM-DD' format
+    },
+    day: {
+      type: String,
+      required: true, // Store the day of the week
+    },
+    timeIn: {
+      type: String,
+      default: null,
+    },
+    timeOut: {
+      type: String,
+      default: null,
+    },
   },
-  date: { 
-    type: String, 
-    required: true // Storing date in 'YYYY-MM-DD' format
-  },
-  timeIn: { 
-    type: String, 
-    default: null 
-  },
-  timeOut: { 
-    type: String, 
-    default: null 
-  },
-}, { timestamps: true }); // Add timestamps to track creation and update times
+  //{ timestamps: true } // Optional: Add timestamps for created/updated fields
+);
 
 const Attendance = mongoose.model("Attendance", attendanceSchema);
 

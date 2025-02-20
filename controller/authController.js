@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+const tokenBlacklistSchema = require('../models/tokenBlacklistSchema')
 // Register a new user
 const registerUser = async (req, res) => {
   const { firstName, lastName, email, phoneNo, password } = req.body;
@@ -67,6 +67,26 @@ const loginUser = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+const logoutUser = async (req, res) => {
+  const token = req.header('Authorization')?.split(' ')[1]; // Extract token
+
+  if (!token) {
+    return res.status(400).json({ message: 'No token provided' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const expiresAt = new Date(decoded.exp * 1000); // Convert expiry to Date
+
+    // Store token in blacklist
+    await tokenBlacklistSchema.create({ token, expiresAt });
+
+    res.status(200).json({ message: 'Logged out successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error logging out', error: error.message });
   }
 };
 
@@ -141,5 +161,6 @@ module.exports = {
   loginUser,
   getUserProfile,
   getAllUsers,
-  deleteUser // Export the new function
+  deleteUser,
+  logoutUser
 };

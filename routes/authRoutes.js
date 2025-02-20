@@ -6,16 +6,21 @@ const {
   loginUser,
   getUserProfile,
   getAllUsers,
-  deleteUser
+  deleteUser,
+  logoutUser
 } = require('../controller/authController');
+
+
 
 // Public routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/all',  getAllUsers); // New route for getting all users
 router.delete('/:_id', deleteUser);
-
+router.post('/logout', logoutUser);
 // Protected routes
 router.get('/profile', protect, getUserProfile);
+
+
 
 module.exports = router;

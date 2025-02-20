@@ -10,6 +10,11 @@ const JWT_EXPIRES_IN = '5m'; // Token expiration time
  * @returns {string} - The signed JWT
  */
 const generateToken = (payload) => {
+  const payload = {
+    _id: user._id,
+    name: user.firstName, // Include the user's name
+    email: user.email, // Include other relevant fields
+  };
   return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 };
 console.log(generateToken,'generateToken')
