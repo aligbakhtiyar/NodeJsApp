@@ -6,15 +6,15 @@ const attendanceRoutes = require("./routes/attendanceRoutes")
 const authRoutes = require("./routes/authRoutes");
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 // CORS Configuration
-// const corsOptions = {
-//   origin: ['https://edublends-lms.vercel.app', 'http://localhost:3000'],
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-// };
-app.use(cors());
+const corsOptions = {
+  origin: ['https://edublends-lms.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
