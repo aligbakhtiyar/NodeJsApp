@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: ['https://edublends-lms.vercel.app', 'http://localhost:3000'],
+  origin: ['*'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
