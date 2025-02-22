@@ -9,13 +9,8 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/",
-      "methods": ["GET", "PUT", "DELETE", "POST", "PATCH", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, PUT, DELETE, POST, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
+      "dest": "/"
+      
     }
   ]
 }
