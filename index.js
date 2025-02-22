@@ -2,23 +2,22 @@ require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const attendanceRoutes = require("./routes/attendanceRoutes")
+const attendanceRoutes = require("./routes/attendanceRoutes");
 const authRoutes = require("./routes/authRoutes");
-
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: "*", // Allow requests from any origin
+  origin: "https://edu-blends.vercel.app", // Allow requests from this specific origin
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true, // Allow credentials like tokens/cookies
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); 
+app.options("*", cors(corsOptions)); // Enable preflight for all routes
 app.use(express.json());
 
 // Routes
