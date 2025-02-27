@@ -21,6 +21,4 @@ router.post('/logout', logoutUser);
 // Protected routes
 router.get('/profile', protect, getUserProfile);
 
-
-
 module.exports = router;
