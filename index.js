@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const videoRoutes = require("./routes/videoRoutes");
 const authRoutes = require("./routes/authRoutes");
+const feeRoutes = require("./routes/feeRoutes")
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/video", videoRoutes);
+app.use("/api", feeRoutes);
 
 // MongoDB connection
 async function main() {
