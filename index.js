@@ -6,13 +6,14 @@ const attendanceRoutes = require("./routes/attendanceRoutes");
 const videoRoutes = require("./routes/videoRoutes");
 const authRoutes = require("./routes/authRoutes");
 const feeRoutes = require("./routes/feeRoutes")
+const feeDeadlineRoutes = require("./routes/feeDeadlineRoutes")
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: "https://edu-blends.vercel.app", 
+  origin: "https://edu-blends.vercel.app" || "http://localhost:3000",
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true, 
@@ -28,6 +29,7 @@ app.use("/api/attendance", attendanceRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/video", videoRoutes);
 app.use("/api", feeRoutes);
+app.use('/api/fee-deadline', feeDeadlineRoutes);
 
 // MongoDB connection
 async function main() {
